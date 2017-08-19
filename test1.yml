@@ -1,6 +1,6 @@
 ---
 - hosts: webservers
-  remote_user: chens
+  user: chens
   tasks:
     - name: memory
       shell: "free -m"
