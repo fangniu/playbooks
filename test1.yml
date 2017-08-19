@@ -1,5 +1,5 @@
 ---
 - hosts: webservers
   tasks:
-    - name: test connection
-      ping:
+    - name: list files
+      shell: "ls ~"
