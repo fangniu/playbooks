@@ -1,5 +1,5 @@
 ---
 - hosts: webservers
   tasks:
-    - name: list files
-      shell: "ls ~"
+    - name: memory
+      shell: "free -m"
