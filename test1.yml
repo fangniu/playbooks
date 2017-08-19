@@ -5,3 +5,4 @@
     - name: memory
       shell: "free -m"
       register: out
+      debug: msg={{ out.stdout }}
