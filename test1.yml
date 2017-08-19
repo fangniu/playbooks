@@ -4,3 +4,4 @@
   tasks:
     - name: memory
       shell: "free -m"
+      register: out
