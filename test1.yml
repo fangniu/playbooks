@@ -1,5 +1,6 @@
 ---
-- user: chens
+- hosts: "{{ variable_host | default('web') }}"
+  user: chens
   tasks:
     - name: memory
       shell: "free -m"
