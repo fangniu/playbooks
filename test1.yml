@@ -1,6 +1,5 @@
 ---
-- hosts: webservers
-  user: chens
+- user: chens
   tasks:
     - name: memory
       shell: "free -m"
