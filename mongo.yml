@@ -1,0 +1,9 @@
+- hosts: "{{ variable_hosts }}"
+  user: chens
+  tasks:
+    - name: Install the package "mongodb"
+      apt:
+        name: mongodb
+        state: present
+      register: out
+    - debug: msg={{ out.stdout }}
