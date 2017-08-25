@@ -2,6 +2,7 @@
   user: chens
   tasks:
     - name: Install the package "mongodb"
+      become: true
       apt:
         name: mongodb
         state: present
