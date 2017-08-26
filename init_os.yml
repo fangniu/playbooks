@@ -1,0 +1,8 @@
+---
+- hosts: "{{ variable_hosts }}"
+  user: chens
+  tasks:
+    - name: memory
+      shell: "free -m"
+      register: out
+    - debug: msg={{ out.stdout }}
