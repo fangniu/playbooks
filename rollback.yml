@@ -1,4 +1,4 @@
-- name: Rollback example app to my-server.com
+- name: Rollback App
   hosts: all
   # vars:
     # ansistrano_deploy_to: "/tmp/my-app.com"
