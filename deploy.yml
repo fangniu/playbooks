@@ -4,7 +4,7 @@
   vars:
     ansistrano_keep_releases: 10
     # There seems to be an issue with rsync in vagrant
-    ansistrano_deploy_via: download
+    # ansistrano_deploy_via: download
     # ansistrano_deploy_to: "/tmp/my-app.com"
     # ansistrano_get_url: https://github.com/fangniu/playbooks.git
   roles:
