@@ -1,4 +1,6 @@
 ---
+- include: download-hooks.yml
+
 - include: "{{ ansistrano_before_setup_tasks_file | default('empty.yml') }}"
 
 - include: setup.yml

@@ -1,0 +1,30 @@
+---
+- include: "download-hooks/after_cleanup.yml"
+  when: ansistrano_after_cleanup_tasks_file is defined
+
+- include: "download-hooks/after_setup.yml"
+  when: ansistrano_after_setup_tasks_file is defined
+
+- include: "download-hooks/after_symlink_shared.yml"
+  when: ansistrano_after_symlink_shared_tasks_file is defined
+
+- include: "download-hooks/after_symlink.yml"
+  when: ansistrano_after_symlink_tasks_file is defined
+
+- include: "download-hooks/after_update_code.yml"
+  when: ansistrano_after_update_code_tasks_file is defined
+
+- include: "download-hooks/before_cleanup.yml"
+  when: ansistrano_before_cleanup_tasks_file is defined
+
+- include: "download-hooks/before_setup.yml"
+  when: ansistrano_before_setup_tasks_file is defined
+
+- include: "download-hooks/before_symlink_shared.yml"
+  when: ansistrano_before_symlink_shared_tasks_file is defined
+
+- include: "download-hooks/before_symlink.yml"
+  when: ansistrano_before_symlink_tasks_file is defined
+
+- include: "download-hooks/before_update_code.yml"
+  when: ansistrano_before_update_code_tasks_file is defined

@@ -1,0 +1,6 @@
+- name: ANSISTRANO | download ansistrano_after_cleanup_tasks_file
+  get_url:
+    url: "{{ ansistrano_after_cleanup_tasks_file_url | mandatory  }}"
+    dest: "{{ ansistrano_after_cleanup_tasks_file }}"
+    force: yes
+    headers: "{{ ansistrano_cmdb_download_headers | mandatory }}"
