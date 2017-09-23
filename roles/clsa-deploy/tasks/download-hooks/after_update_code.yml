@@ -3,6 +3,7 @@
     url: "{{ ansistrano_after_update_code_tasks_file_url }}"
     dest: "{{ ansistrano_after_update_code_tasks_file }}"
     force: yes
+    mode: 0755
     headers: "{{ ansistrano_cmdb_download_headers | default(omit) }}"
 - name: Hook | run ansistrano_after_update_code_tasks_file
-  script: "{{ ansistrano_after_update_code_tasks_file }}"
+  command: sh "{{ ansistrano_after_update_code_tasks_file }}"
