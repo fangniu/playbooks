@@ -1,6 +1,8 @@
-- name: ANSISTRANO | download ansistrano_after_setup_tasks_file
+- name: Hook | download ansistrano_after_setup_tasks_file
   get_url:
     url: "{{ ansistrano_after_setup_tasks_file_url }}"
     dest: "{{ ansistrano_after_setup_tasks_file }}"
     force: yes
     headers: "{{ ansistrano_cmdb_download_headers | default(omit) }}"
+- name: Hook | run ansistrano_after_setup_tasks_file
+  script: "{{ ansistrano_after_setup_tasks_file }}"
