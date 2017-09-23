@@ -7,3 +7,5 @@
     headers: "{{ ansistrano_cmdb_download_headers | default(omit) }}"
 - name: Hook | run ansistrano_before_symlink_tasks_file
   command: sh "{{ ansistrano_before_symlink_tasks_file }}"
+  register: out
+- debug: msg={{ out.stdout }}
