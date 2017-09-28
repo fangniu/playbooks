@@ -42,5 +42,4 @@
 
 - include: "download-hooks/after_cleanup.yml"
   when: ansistrano_after_cleanup_tasks_file is defined
-
-- include: anon-stats.yml
+  
