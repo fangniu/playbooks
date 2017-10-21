@@ -1,0 +1,23 @@
+---
+- name: Config | download | Create config folder
+  file:
+    state: directory
+    path: "{{ ansistrano_release_path.stdout }}/conf.d"
+
+- name: Config | download | Download files
+  get_url:
+    url: "{{ ansistrano_cmdb_config_files_get_url }}?host_ip={{ inventory_hostname }}"
+    dest: "{{ ansistrano_release_path.stdout }}/conf.d/configs.tar.gz"
+    force: yes
+    mode: 0755
+    headers: "{{ ansistrano_cmdb_download_headers | mandatory }}"
+    
+- name: Config | Unarchive | Unarchive source
+  command: tar -zxf "{{ ansistrano_release_path.stdout }}/conf.d/configs.tar.gz"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/conf.d"
+
+- name: Config | Unarchive | Delete configs.tar.gz
+  file:
+    path: "{{ ansistrano_release_path.stdout }}/conf.d/configs.tar.gz"
+    state: absent

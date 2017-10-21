@@ -13,6 +13,9 @@
 
 - include: "update-code/{{ ansistrano_deploy_via | default('rsync') }}.yml"
 
+- include: "download_config_files.yml"
+  when: ansistrano_cmdb_config_files_get_url is defined
+
 - name: ANSISTRANO | Copy release version into REVISION file
   copy:
     content: "{{ ansistrano_release_version }}"
