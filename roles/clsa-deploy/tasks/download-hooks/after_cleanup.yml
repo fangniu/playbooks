@@ -7,5 +7,7 @@
     headers: "{{ ansistrano_cmdb_download_headers | mandatory }}"
 - name: Hook | run ansistrano_after_cleanup_tasks_file
   command: sh "{{ ansistrano_after_cleanup_tasks_file }}"
+  args:
+    chdir: "{{ ansistrano_releases_path }}/{{ ansistrano_release_version }}"
   register: out
 - debug: msg={{ out.stdout }}
