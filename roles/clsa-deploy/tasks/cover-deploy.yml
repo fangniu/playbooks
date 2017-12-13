@@ -1,0 +1,35 @@
+---
+
+# Migration check from symlink deployment
+- stat:
+    path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+  register: stat_current_dir
+
+- name: ANSISTRANO | Remove current folder if it's a symlink
+  file:
+    state: absent
+    path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+  when: stat_current_dir.stat.islnk is defined and stat_current_dir.stat.islnk
+
+
+- name: ANSISTRANO | Cover current directory by new release
+  command: cp -fr ./{{ ansistrano_version_dir }}/{{ ansistrano_release_version }} {{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }} removes=./{{ ansistrano_version_dir }}/{{ ansistrano_release_version }}
+
+# Ensure symlinks target paths is absent
+- name: ANSISTRANO | Ensure shared paths targets are absent
+  file:
+    state: absent
+    path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}/{{ item }}"
+  with_flattened:
+    - "{{ ansistrano_shared_paths }}"
+    - "{{ ansistrano_shared_files }}"
+
+# Symlinks shared paths
+- name: ANSISTRANO | Create softlinks for shared paths
+  file:
+    state: link
+    path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}/{{ item }}"
+    src: "{{ item | regex_replace('[^\\/]*', '..') }}/shared/{{ item }}"
+  with_flattened:
+    - "{{ ansistrano_shared_paths }}"
+    - "{{ ansistrano_shared_files }}"
